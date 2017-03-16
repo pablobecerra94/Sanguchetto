@@ -43,8 +43,16 @@ public class ControladorHome {
 		}
 		return new ModelAndView("AltaIngrediente",model);
 
+	}
+	
+	@RequestMapping(value="verStockDisponible")
+	public ModelAndView verStock(){
 		
-		
+		ModelMap model = new ModelMap();
+		model.put("stock", Stock.getInstance().obtenerStock());
+	
+		return new ModelAndView("verStockDisponible",model);
+
 	}
 	
 }
