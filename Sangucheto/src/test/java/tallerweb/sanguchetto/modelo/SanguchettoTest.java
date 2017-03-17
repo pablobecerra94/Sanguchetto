@@ -1,31 +1,87 @@
 package tallerweb.sanguchetto.modelo;
 
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
+
+import tallerweb.sangucheto.modelo.Ingrediente;
+import tallerweb.sangucheto.modelo.Sanguchetto;
+import tallerweb.sangucheto.modelo.Stock;
+import tallerweb.sangucheto.modelo.TipoIngrediente;
 
 public class SanguchettoTest {
 
-    @Test
-    public void testVaciar() {
-        // Implementar
-    }
+	Ingrediente ingrediente;
+	Ingrediente condimento;
+	Sanguchetto sangucheto;
 
-    @Test
-    public void testAgregarIngrediente() {
-        // Implementar
-    }
+	@Before
+	public void crear() {
+		sangucheto = Sanguchetto.getInstance();
+		ingrediente = new Ingrediente();
+		ingrediente.setNombre("Milanesa");
+		ingrediente.setTipo(TipoIngrediente.INGREDIENTE);
+		ingrediente.setPrecio(10.25);
+		Stock stock = Stock.getInstance();
+		stock.agregarIngrediente(ingrediente);
+		stock.agregarStock(ingrediente, 10);
+		condimento = new Ingrediente();
+		condimento.setNombre("Mayonesa");
+		condimento.setPrecio(1.25);
+		condimento.setTipo(TipoIngrediente.CONDIMENTO);
+		stock.agregarIngrediente(condimento);
+		stock.agregarStock(condimento, 10);
+	}
 
-    @Test
-    public void testVerIngredientes() {
-        // Implementar
-    }
+	@Test
+	public void testVaciar() {
 
-    @Test
-    public void testVerCondimentos() {
-        // Implementar
-    }
+		sangucheto.agregarIngrediente(ingrediente);
+		sangucheto.agregarIngrediente(condimento);
+		sangucheto.vaciar();
+		assertTrue(sangucheto.verIngredientes().isEmpty());
+		assertTrue(sangucheto.verCondimentos().isEmpty());
+	}
 
-    @Test
-    public void testGetPrecio() {
-        // Implementar
-    }
+	@Test
+	public void testAgregarIngrediente() {
+		sangucheto.vaciar();
+		sangucheto.agregarIngrediente(ingrediente);
+		assertEquals(1, sangucheto.verIngredientes().size());
+
+	}
+
+	@Test
+	public void testVerIngredientes() {
+		sangucheto.vaciar();
+		sangucheto.agregarIngrediente(ingrediente);
+		List<Ingrediente> ingredientes = sangucheto.verIngredientes();
+		for (Ingrediente ingredienteAgregado : ingredientes) {
+			assertEquals("Milanesa", ingredienteAgregado.getNombre());
+			System.out.println(ingredienteAgregado.getNombre());
+		}
+	}
+
+	@Test
+	public void testVerCondimentos() {
+		sangucheto.vaciar();
+		sangucheto.agregarIngrediente(condimento);
+		List<Ingrediente> condimentos = sangucheto.verCondimentos();
+		for (Ingrediente condimentoAgregado : condimentos) {
+			assertEquals("Mayonesa", condimentoAgregado.getNombre());
+			System.out.println(condimentoAgregado.getNombre());
+		}
+	}
+
+	@Test
+	public void testGetPrecio() {
+		sangucheto.vaciar();
+		sangucheto.agregarIngrediente(ingrediente);
+		sangucheto.agregarIngrediente(condimento);
+		Double valorEsperado = 11.5;
+		assertEquals(valorEsperado, sangucheto.getPrecio());
+	}
 }

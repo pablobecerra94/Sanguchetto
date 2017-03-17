@@ -20,12 +20,17 @@ public class Sanguchetto {
 	 */
 	public void vaciar() {
 		Stock stock = Stock.getInstance();
-		for(Ingrediente ingrediente: ingredientes){
+		for(int i=ingredientes.size()-1;i>=0;i--){
+			Ingrediente ingrediente = ingredientes.get(i);
 			if(!stock.agregarStock(ingrediente, 1)){
 				stock.agregarIngrediente(ingrediente);
-				stock.agregarStock(ingrediente, 1);
+				
 			}
+			stock.agregarStock(ingrediente, 1);
+			ingredientes.remove(ingrediente);
+			
 		}
+		
 	}
 
 	/**
