@@ -52,8 +52,6 @@
 		</div>
 	</div>
 
-	<h2>Vaciar Sanguchetto</h2>
-
 	<div class="page-header">
 		<h1>Sanguchetto Precio Total "${precio}"</h1>
 	</div>
