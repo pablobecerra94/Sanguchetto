@@ -96,4 +96,9 @@ public class Sanguchetto {
 		return precioTotal;
 
 	}
+
+	public void finalizarCompra() {
+		ingredientes.clear();
+		
+	}
 }

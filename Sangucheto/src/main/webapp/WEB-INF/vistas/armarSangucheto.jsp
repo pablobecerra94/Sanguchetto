@@ -35,12 +35,12 @@
 							modelAttribute="ingrediente" role="form" method="POST">
 							<tr>
 
-								<td><form:input style="border:none" path="nombre" value="${object.key.nombre}"
-										readonly="true" /></td>
-								<td><form:input style="border:none"  path="tipo" value="${object.key.tipo}"
-										readonly="true" /></td>
-								<td><form:input style="border:none"  path="precio" value="${object.key.precio}"
-										readonly="true" /></td>
+								<td><form:input style="border:none" path="nombre"
+										value="${object.key.nombre}" readonly="true" /></td>
+								<td><form:input style="border:none" path="tipo"
+										value="${object.key.tipo}" readonly="true" /></td>
+								<td><form:input style="border:none" path="precio"
+										value="${object.key.precio}" readonly="true" /></td>
 								<td><button type="submit" class="btn btn-primary">Agregar
 										al Sanguchetto</button></td>
 
@@ -53,9 +53,7 @@
 	</div>
 
 	<h2>Vaciar Sanguchetto</h2>
-	<form action="armarSanguchettoVaciar" method="POST">
-		<button type="submit" class="btn btn-primary">VaciarSanguchetto</button>
-	</form>
+
 	<div class="page-header">
 		<h1>Sanguchetto Precio Total "${precio}"</h1>
 	</div>
@@ -83,5 +81,32 @@
 			</table>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-borderless table-condensed table-hover">
+				<tbody>
+					<tr>
+						<td><form action="comprarSangucheto" method="POST">
+								<button type="submit" class="btn btn-primary">Comprar
+									Sangucheto</button>
+							</form></td>
+						<td>
+							<form action="armarSanguchettoVaciar" method="POST">
+								<button type="submit" class="btn btn-primary">Cancelar</button>
+							</form>
+						</td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+
+
+
 </body>
 </html>

@@ -132,5 +132,13 @@ public class ControladorHome {
 		
 		return new ModelAndView("agregarOQuitarStock",model);
 	}
+	
+	@RequestMapping(value = "comprarSangucheto", method = RequestMethod.POST)
+	public ModelAndView comprarSangucheto(){
+		Sanguchetto.getInstance().finalizarCompra();
+		return new ModelAndView("comprarSangucheto");
+		
+	}
+	
 
 }
