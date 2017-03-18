@@ -122,4 +122,14 @@ public class Stock {
 		this.stock.remove(ingrediente);
 		return true;
 	}
+
+	public Boolean quitarStock(Ingrediente ingrediente, Integer cantidad) {
+		if(!this.stock.containsKey(ingrediente)){
+			return false;
+		}
+		
+		this.stock.put(ingrediente, cantidad<obtenerStockDisponible(ingrediente)?obtenerStockDisponible(ingrediente)-cantidad:0);
+		return true;
+		
+	}
 }

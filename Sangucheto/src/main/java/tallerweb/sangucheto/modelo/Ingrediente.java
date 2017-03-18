@@ -29,7 +29,7 @@ public class Ingrediente {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		
 		return result;
 	}
 	@Override
@@ -46,8 +46,7 @@ public class Ingrediente {
 				return false;
 		} else if (!nombre.equals(other.nombre))
 			return false;
-		if (tipo != other.tipo)
-			return false;
+	
 		return true;
 	}
     

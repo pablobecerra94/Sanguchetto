@@ -10,9 +10,8 @@ public class Sanguchetto {
 
 	private Sanguchetto() {
 	}
-	
-	public List<Ingrediente> obtenerSanguchetto()
-	{
+
+	public List<Ingrediente> obtenerSanguchetto() {
 		return ingredientes;
 	}
 
@@ -25,13 +24,13 @@ public class Sanguchetto {
 	 */
 	public void vaciar() {
 		Stock stock = Stock.getInstance();
-		for(Ingrediente ingrediente: ingredientes){
-			
-			if(!stock.agregarStock(ingrediente, 1)){
+		for (Ingrediente ingrediente : ingredientes) {
+
+			if (!stock.agregarStock(ingrediente, 1)) {
 				stock.agregarIngrediente(ingrediente);
 				stock.agregarStock(ingrediente, 1);
 			}
-			
+
 		}
 		ingredientes.clear();
 	}
