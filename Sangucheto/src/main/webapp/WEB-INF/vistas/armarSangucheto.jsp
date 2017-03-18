@@ -6,25 +6,52 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Arma tu Sangucheto!</title>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap theme -->
+<link href="css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<c:forEach items="${stock}" var="object">
-		<form:form action="armarSanguchettoAgrega"
-			modelAttribute="ingrediente" role="form" method="POST">
-			<h2>
-				<form:input path="nombre" value="${object.key.nombre}"
-					readonly="true" />
-				<form:input path="tipo" value="${object.key.tipo}" readonly="true" />
-				<form:input path="precio" value="${object.key.precio}"
-					readonly="true" />
-				<button type="submit" class="btn btn-primary">Agregar al
-					Sanguchetto</button>
+	<div class="page-header">
+		<h1>Arma tu Sangucheto</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Ingrediente</th>
+						<th>Tipo</th>
+						<th>Precio</th>
+						<th>
+					</tr>
+				</thead>
+				<tbody>
 
-			</h2>
-		</form:form>
-	</c:forEach>
+					<c:forEach items="${stock}" var="object">
+						<form:form action="armarSanguchettoAgrega"
+							modelAttribute="ingrediente" role="form" method="POST">
+							<tr>
+
+								<td><form:input style="border:none" path="nombre" value="${object.key.nombre}"
+										readonly="true" /></td>
+								<td><form:input style="border:none"  path="tipo" value="${object.key.tipo}"
+										readonly="true" /></td>
+								<td><form:input style="border:none"  path="precio" value="${object.key.precio}"
+										readonly="true" /></td>
+								<td><button type="submit" class="btn btn-primary">Agregar
+										al Sanguchetto</button></td>
+
+							</tr>
+						</form:form>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
 	<h2>Vaciar Sanguchetto</h2>
 	<form action="armarSanguchettoVaciar" method="POST">
 		<button type="submit" class="btn btn-primary">VaciarSanguchetto</button>
@@ -38,8 +65,8 @@
 				<thead>
 					<tr>
 						<th>Nombre</th>
-						<th>tipo</th>
-						<th>precio</th>
+						<th>Tipo</th>
+						<th>Precio</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,8 +83,5 @@
 			</table>
 		</div>
 	</div>
-
-
-
 </body>
 </html>

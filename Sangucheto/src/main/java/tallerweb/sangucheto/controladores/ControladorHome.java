@@ -67,7 +67,7 @@ public class ControladorHome {
 		return new ModelAndView("armarSangucheto",model);
 	}
 				//AGREGAR SANGUCHETTO
-	@RequestMapping(value="armarSanguchettoAgrega")
+	@RequestMapping(value="armarSanguchettoAgrega", method=RequestMethod.POST)
 	public ModelAndView armarSanguchetoAgrega(@ModelAttribute("ingrediente") Ingrediente ingrediente){
 		ModelMap model = new ModelMap();
 		if(Sanguchetto.getInstance().agregarIngrediente(ingrediente))
@@ -81,7 +81,7 @@ public class ControladorHome {
 		return new ModelAndView("armarSangucheto",model);
 	}
 				//VACIAR SANGUCHETTO
-	@RequestMapping(value="armarSanguchettoVaciar")
+	@RequestMapping(value="armarSanguchettoVaciar", method=RequestMethod.POST)
 	public ModelAndView armarSanguchetoVaciar(){
 		ModelMap model = new ModelMap();
 		Sanguchetto.getInstance().vaciar();
