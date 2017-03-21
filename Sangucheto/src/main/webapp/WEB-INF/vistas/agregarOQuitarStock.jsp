@@ -43,7 +43,7 @@
 	<div class="page-header">
 		<h1>Agregar o quitar Stock</h1>
 	</div>
-
+	<h2>Ingredientes</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table table-bordered">
@@ -62,7 +62,7 @@
 						<form:form action="" modelAttribute="ingrediente" role="form"
 							method="POST">
 							<tr>
-
+							<c:if test="${object.key.tipo.toString().equals('INGREDIENTE')}">
 								<td><form:input style="border:none" path="nombre"
 										value="${object.key.nombre}" readonly="true" /></td>
 								<td>${object.value}</td>
@@ -72,13 +72,62 @@
 										type="submit" class="btn btn-primary">Agregar</button></td>
 								<td><button onclick="this.form.action='quitarStock';"
 										type="submit" class="btn btn-primary">Quitar</button></td>
-								<td><button onclick="this.form.action='eliminarIngrediente';"
+								<td><button
+										onclick="this.form.action='eliminarIngrediente';"
 										type="submit" class="btn btn-primary">Eliminar</button></td>
+							</c:if>
 							</tr>
 						</form:form>
 					</c:forEach>
 				</tbody>
 
 				</tbody>
+			</table>
+			</div>
+			</div>
+			
+			<h2>Condimentos</h2>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Ingrediente</th>
+						<th>Cantidad Actual</th>
+						<th>Cantidad a modificar</th>
+						<th>Agregar</th>
+						<th>Quitar</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${stock}" var="object">
+						<form:form action="" modelAttribute="ingrediente" role="form"
+							method="POST">
+							<tr>
+							<c:if test="${object.key.tipo.toString().equals('CONDIMENTO')}">
+								<td><form:input style="border:none" path="nombre"
+										value="${object.key.nombre}" readonly="true" /></td>
+								<td>${object.value}</td>
+								<td><input type="number" name="cantidadAIngresar"
+									type="number" value="0" /></td>
+								<td><button onclick="this.form.action='agregarStock';"
+										type="submit" class="btn btn-primary">Agregar</button></td>
+								<td><button onclick="this.form.action='quitarStock';"
+										type="submit" class="btn btn-primary">Quitar</button></td>
+								<td><button
+										onclick="this.form.action='eliminarIngrediente';"
+										type="submit" class="btn btn-primary">Eliminar</button></td>
+							</c:if>
+							</tr>
+						</form:form>
+					</c:forEach>
+				</tbody>
+
+				</tbody>
+			</table>
+			</div>
+			</div>
+		
 </body>
 </html>

@@ -38,6 +38,7 @@
 	<div class="page-header">
 		<h1>Sanguchetto</h1>
 	</div>
+	<h2>Ingredientes</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table table-bordered">
@@ -53,10 +54,41 @@
 
 					<c:forEach items="${sangucheto}" var="object">
 						<tr>
-							<td>${object.key.nombre}</td>
-							<td>${object.key.tipo}</td>
-							<td>${object.key.precio}</td>
-							<td>${object.value}</td>
+							<c:if test="${object.key.tipo.toString().equals('INGREDIENTE')}">
+								<td>${object.key.nombre}</td>
+								<td>${object.key.tipo}</td>
+								<td>${object.key.precio}</td>
+								<td>${object.value}</td>
+							</c:if>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+		<h2>Condimentos</h2>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Tipo</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<c:forEach items="${sangucheto}" var="object">
+						<tr>
+							<c:if test="${object.key.tipo.toString().equals('CONDIMENTO')}">
+								<td>${object.key.nombre}</td>
+								<td>${object.key.tipo}</td>
+								<td>${object.key.precio}</td>
+								<td>${object.value}</td>
+							</c:if>
 						</tr>
 					</c:forEach>
 				</tbody>
