@@ -11,12 +11,17 @@ import org.springframework.web.servlet.ModelAndView;
 import tallerweb.sangucheto.modelo.Ingrediente;
 import tallerweb.sangucheto.modelo.Sanguchetto;
 import tallerweb.sangucheto.modelo.Stock;
+import tallerweb.sangucheto.modelo.TipoIngrediente;
 
 @Controller
 public class ControladorHome {
 
 	@RequestMapping(path = "/")
 	public ModelAndView irAHome() {
+		return new ModelAndView("home");
+	}
+	@RequestMapping(path = "/home")
+	public ModelAndView volverAHome() {
 		return new ModelAndView("home");
 	}
 
@@ -33,8 +38,7 @@ public class ControladorHome {
 		ModelMap model = new ModelMap("ingrediente", ingrediente);
 
 		if (Stock.getInstance().agregarIngrediente(ingrediente)) {
-			Stock.getInstance().agregarStock(ingrediente, 1); // MODIFIQUE ESTA
-																// LINEA
+			
 			model.put("texto", "Se ingreso correctamente el siguiente producto:");
 		} else {
 			model.put("texto", "No se ha podido ingresar el siguiente producto:");
@@ -66,12 +70,12 @@ public class ControladorHome {
 
 	// AGREGAR SANGUCHETTO
 	@RequestMapping(value = "armarSanguchettoAgrega", method = RequestMethod.POST)
-	public ModelAndView armarSanguchetoAgrega(@ModelAttribute("ingrediente") Ingrediente ingrediente) {
+	public ModelAndView armarSanguchetoAgrega(@ModelAttribute("ingrediente") Ingrediente ingrediente, @RequestParam("cantidad") Integer cantidad) {
 		ModelMap model = new ModelMap();
-		if (Sanguchetto.getInstance().agregarIngrediente(ingrediente))
-			System.out.println("se agrego :" + ingrediente.getNombre());
-		else
-			System.out.println("no se cargo");
+		if(cantidad>0){
+			Sanguchetto.getInstance().agregarIngrediente(ingrediente,cantidad);
+		}
+		
 		model.put("ingrediente", new Ingrediente());
 		model.put("precio", Sanguchetto.getInstance().getPrecio());
 		model.put("sanguchetto", Sanguchetto.getInstance().obtenerSanguchetto());
@@ -114,7 +118,9 @@ public class ControladorHome {
 	@RequestMapping(value = "agregarStock", method = RequestMethod.POST)
 	public ModelAndView agregarStock(@ModelAttribute("ingrediente") Ingrediente ingrediente, @RequestParam(value="cantidadAIngresar") Integer cantidad){
 		ModelMap model = new ModelMap();
-		Stock.getInstance().agregarStock(ingrediente, cantidad);
+		if(cantidad>0){			
+			Stock.getInstance().agregarStock(ingrediente, cantidad);
+		}
 		model.put("stock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente",new Ingrediente());
 		
@@ -125,7 +131,9 @@ public class ControladorHome {
 	@RequestMapping(value = "quitarStock", method = RequestMethod.POST)
 	public ModelAndView QuitarStock(@ModelAttribute("ingrediente") Ingrediente ingrediente, @RequestParam(value="cantidadAIngresar") Integer cantidad){
 		ModelMap model = new ModelMap();
-		Stock.getInstance().quitarStock(ingrediente, cantidad);
+		if(cantidad>0){			
+			Stock.getInstance().quitarStock(ingrediente, cantidad);
+		}
 		model.put("stock", Stock.getInstance().obtenerStock());
 		model.put("ingrediente",new Ingrediente());
 		
@@ -135,9 +143,34 @@ public class ControladorHome {
 	
 	@RequestMapping(value = "comprarSangucheto", method = RequestMethod.POST)
 	public ModelAndView comprarSangucheto(){
-		Sanguchetto.getInstance().finalizarCompra();
-		return new ModelAndView("comprarSangucheto");
+	
+		ModelMap model = new ModelMap();
+		if(Sanguchetto.getInstance().estaVacio()){
+			
+			model.put("ingrediente", new Ingrediente());
+			model.put("precio", Sanguchetto.getInstance().getPrecio());
+			model.put("sanguchetto", Sanguchetto.getInstance().obtenerSanguchetto());
+			model.put("stock", Stock.getInstance().obtenerStock());
+			return new ModelAndView("armarSangucheto");
+		}
+		else{
+			Sanguchetto.getInstance().finalizarCompra();
+			return new ModelAndView("comprarSangucheto");
+		}
+			
 		
+	}
+	
+	@RequestMapping(value="eliminarIngrediente", method = RequestMethod.POST)
+	public ModelAndView eliminarIngrediente(@ModelAttribute("ingrediente") Ingrediente ingrediente){
+		Stock.getInstance().eliminarIngrediente(ingrediente);
+		
+		ModelMap model = new ModelMap();
+		model.put("stock", Stock.getInstance().obtenerStock());
+		model.put("ingrediente",new Ingrediente());
+		
+		
+		return new ModelAndView("agregarOQuitarStock",model);
 	}
 	
 

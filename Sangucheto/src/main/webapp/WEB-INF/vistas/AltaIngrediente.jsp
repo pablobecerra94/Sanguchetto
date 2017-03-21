@@ -11,6 +11,33 @@
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home">Sangucheto</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="armarSangucheto">Armar Sangucheto</a></li>
+				<li><a href="mostrarSangucheto">Ver Sangucheto</a></li>
+				<li class="active"><a href="ingresaringrediente">Ingresar ingrediente</a></li>
+				<li ><a href="agregarOQuitarStock">Modificar
+						Stock</a></li>
+				<li><a href="verStockDisponible">Stock Disponible</a></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+	</nav>
+	<br>
 	<div class="page-header">
 		<h1>Registro de Ingrediente</h1>
 	</div>

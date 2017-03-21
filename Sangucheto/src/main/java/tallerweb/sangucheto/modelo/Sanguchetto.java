@@ -1,17 +1,24 @@
 package tallerweb.sangucheto.modelo;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Sanguchetto {
 
 	private static Sanguchetto instance = new Sanguchetto();
-	private List<Ingrediente> ingredientes = new LinkedList<Ingrediente>();
+	private HashMap<Ingrediente,Integer> ingredientes = new HashMap<Ingrediente, Integer>();
 
 	private Sanguchetto() {
 	}
+	
+	public Boolean estaVacio()
+	{
+		return ingredientes.isEmpty();
+	}
 
-	public List<Ingrediente> obtenerSanguchetto() {
+	public HashMap<Ingrediente,Integer> obtenerSanguchetto() {
 		return ingredientes;
 	}
 
@@ -24,11 +31,11 @@ public class Sanguchetto {
 	 */
 	public void vaciar() {
 		Stock stock = Stock.getInstance();
-		for (Ingrediente ingrediente : ingredientes) {
+		for (Ingrediente ingrediente : ingredientes.keySet()) {
 
-			if (!stock.agregarStock(ingrediente, 1)) {
+			if (!stock.agregarStock(ingrediente, ingredientes.get(ingrediente))) {
 				stock.agregarIngrediente(ingrediente);
-				stock.agregarStock(ingrediente, 1);
+				stock.agregarStock(ingrediente, ingredientes.get(ingrediente));
 			}
 
 		}
@@ -40,10 +47,15 @@ public class Sanguchetto {
 	 * 
 	 * @param ingrediente
 	 */
-	public Boolean agregarIngrediente(Ingrediente ingrediente) {
+	public Boolean agregarIngrediente(Ingrediente ingrediente, Integer cantidad) {
 		Stock stock = Stock.getInstance();
-		if (stock.comprarIngrediente(ingrediente, 1)) {
-			ingredientes.add(ingrediente);
+		if (stock.comprarIngrediente(ingrediente, cantidad)) {
+			if(ingredientes.containsKey(ingrediente)){
+				ingredientes.put(ingrediente,ingredientes.get(ingrediente) + cantidad);				
+			}
+			else{
+				ingredientes.put(ingrediente, cantidad);
+			}
 			return true;
 		}
 		return false;
@@ -57,7 +69,7 @@ public class Sanguchetto {
 	 */
 	public List<Ingrediente> verIngredientes() {
 		List<Ingrediente> ingredientesADevolver = new LinkedList<>();
-		for (Ingrediente ingrediente : ingredientes) {
+		for (Ingrediente ingrediente : ingredientes.keySet()) {
 			if (ingrediente.getTipo().equals(TipoIngrediente.INGREDIENTE)) {
 				ingredientesADevolver.add(ingrediente);
 			}
@@ -73,7 +85,7 @@ public class Sanguchetto {
 	 */
 	public List<Ingrediente> verCondimentos() {
 		List<Ingrediente> condimentos = new LinkedList<>();
-		for (Ingrediente ingrediente : ingredientes) {
+		for (Ingrediente ingrediente : ingredientes.keySet()) {
 			if (ingrediente.getTipo().equals(TipoIngrediente.CONDIMENTO)) {
 				condimentos.add(ingrediente);
 			}
@@ -89,8 +101,8 @@ public class Sanguchetto {
 	 */
 	public Double getPrecio() {
 		Double precioTotal = 0.0;
-		for (Ingrediente ingrediente : ingredientes) {
-			precioTotal += ingrediente.getPrecio();
+		for (Ingrediente ingrediente : ingredientes.keySet()) {
+			precioTotal += ingrediente.getPrecio()*ingredientes.get(ingrediente);
 		}
 
 		return precioTotal;
@@ -99,6 +111,7 @@ public class Sanguchetto {
 
 	public void finalizarCompra() {
 		ingredientes.clear();
-		
 	}
+
+	
 }

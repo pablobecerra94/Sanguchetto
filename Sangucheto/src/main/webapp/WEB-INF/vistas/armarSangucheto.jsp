@@ -14,9 +14,37 @@
 </head>
 
 <body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home">Sangucheto</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="armarSangucheto">Armar
+						Sangucheto</a></li>
+				<li><a href="mostrarSangucheto">Ver Sangucheto</a></li>
+				<li><a href="ingresaringrediente">Ingresar ingrediente</a></li>
+				<li><a href="agregarOQuitarStock">Modificar Stock</a></li>
+				<li><a href="verStockDisponible">Stock Disponible</a></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+	</nav>
+	<br>
 	<div class="page-header">
 		<h1>Arma tu Sangucheto</h1>
 	</div>
+	<h2>Ingredientes</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table table-bordered">
@@ -25,6 +53,7 @@
 						<th>Ingrediente</th>
 						<th>Tipo</th>
 						<th>Precio</th>
+						<th>Cantidad</th>
 						<th>
 					</tr>
 				</thead>
@@ -34,16 +63,61 @@
 						<form:form action="armarSanguchettoAgrega"
 							modelAttribute="ingrediente" role="form" method="POST">
 							<tr>
+								<c:if test="${object.key.tipo.toString().equals('INGREDIENTE')}">
+								<c:if test="${object.value>0}">
+									<td><form:input style="border:none" path="nombre"
+											value="${object.key.nombre}" readonly="true" /></td>
+									<td><form:input style="border:none" path="tipo"
+											value="${object.key.tipo}" readonly="true" /></td>
+									<td><form:input style="border:none" path="precio"
+											value="${object.key.precio}" readonly="true" /></td>
+									<td><input type="number" name="cantidad" type="number"
+										value="1" placeholder="Ingresar numero positivo" /></td>
+									<td><button type="submit" class="btn btn-primary">Agregar
+											al Sanguchetto</button></td>
+								</c:if>
+								</c:if>
+							</tr>
+						</form:form>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-								<td><form:input style="border:none" path="nombre"
-										value="${object.key.nombre}" readonly="true" /></td>
-								<td><form:input style="border:none" path="tipo"
-										value="${object.key.tipo}" readonly="true" /></td>
-								<td><form:input style="border:none" path="precio"
-										value="${object.key.precio}" readonly="true" /></td>
-								<td><button type="submit" class="btn btn-primary">Agregar
-										al Sanguchetto</button></td>
+	<h2>Condimentos</h2>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Ingrediente</th>
+						<th>Tipo</th>
+						<th>Precio</th>
+						<th>Cantidad</th>
+						<th>
+					</tr>
+				</thead>
+				<tbody>
 
+					<c:forEach items="${stock}" var="object">
+						<form:form action="armarSanguchettoAgrega"
+							modelAttribute="ingrediente" role="form" method="POST">
+							<tr>
+								<c:if test="${object.key.tipo.toString().equals('CONDIMENTO')}">
+								<c:if test="${object.value>0}">
+									<td><form:input style="border:none" path="nombre"
+											value="${object.key.nombre}" readonly="true" /></td>
+									<td><form:input style="border:none" path="tipo"
+											value="${object.key.tipo}" readonly="true" /></td>
+									<td><form:input style="border:none" path="precio"
+											value="${object.key.precio}" readonly="true" /></td>
+									<td><input type="number" name="cantidad" type="number"
+										value="1" placeholder="Ingresar numero positivo" /></td>
+									<td><button type="submit" class="btn btn-primary">Agregar
+											al Sanguchetto</button></td>
+								</c:if>
+								</c:if>
 							</tr>
 						</form:form>
 					</c:forEach>
@@ -63,15 +137,17 @@
 						<th>Nombre</th>
 						<th>Tipo</th>
 						<th>Precio</th>
+						<th>Cantidad</th>
 					</tr>
 				</thead>
 				<tbody>
 
 					<c:forEach items="${sanguchetto}" var="object">
 						<tr>
-							<td>${object.nombre}</td>
-							<td>${object.tipo}</td>
-							<td>${object.precio}</td>
+							<td>${object.key.nombre}</td>
+							<td>${object.key.tipo}</td>
+							<td>${object.key.precio}</td>
+							<td>${object.value}</td>
 
 						</tr>
 					</c:forEach>
