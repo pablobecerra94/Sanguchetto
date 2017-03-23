@@ -26,19 +26,25 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="armarSangucheto">Armar Sangucheto</a></li>
-				<li><a href="mostrarSangucheto">Ver Sangucheto</a></li>
 				<li><a href="ingresaringrediente">Ingresar ingrediente</a></li>
 				<li><a href="agregarOQuitarStock">Modificar Stock</a></li>
 				<li><a href="verStockDisponible">Stock Disponible</a></li>
 			</ul>
 		</div>
+		
+		
 		<!--/.nav-collapse -->
 	</div>
 	</nav>
+	<br>
+	<br>
+<div align="center" class="page-header">
+<img class="img-rounded" width="17%" src="images/SanguchettoImg.jpg"/>
+</div>
 
-
-
-
+<div class="container" align="center">
+<img src="images/SanguchettoImg2.jpg"/>
+</div>
 
 
 </body>

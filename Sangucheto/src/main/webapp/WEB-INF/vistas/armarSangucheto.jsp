@@ -32,7 +32,6 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="armarSangucheto">Armar
 						Sangucheto</a></li>
-				<li><a href="mostrarSangucheto">Ver Sangucheto</a></li>
 				<li><a href="ingresaringrediente">Ingresar ingrediente</a></li>
 				<li><a href="agregarOQuitarStock">Modificar Stock</a></li>
 				<li><a href="verStockDisponible">Stock Disponible</a></li>
@@ -55,7 +54,7 @@
 						<th>Tipo</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
-						<th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -96,7 +95,7 @@
 						<th>Tipo</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
-						<th>
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -151,18 +150,27 @@
 						<th>Tipo</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-
 					<c:forEach items="${sanguchetto}" var="object">
-						<tr>
-							<td>${object.key.nombre}</td>
-							<td>${object.key.tipo}</td>
-							<td>${object.key.precio}</td>
-							<td>${object.value}</td>
+						<form:form modelAttribute="ingrediente" role="form"
+							action="eliminarDeSanguchetto" method="POST">
+							<tr>
+								<td><form:input style="border:none" path="nombre"
+										value="${object.key.nombre}" readonly="true" /></td>
+								<td><form:input style="border:none" path="tipo"
+										value="${object.key.tipo}" readonly="true" /></td>
+								<td><form:input style="border:none" path="precio"
+										value="${object.key.precio}" readonly="true" /></td>
 
-						</tr>
+								<td>${object.value}</td>
+								<td><button type="submit" class="btn btn-primary">Eliminar
+										Ingrediente</button></td>
+							</tr>
+						</form:form>
+
 					</c:forEach>
 				</tbody>
 			</table>

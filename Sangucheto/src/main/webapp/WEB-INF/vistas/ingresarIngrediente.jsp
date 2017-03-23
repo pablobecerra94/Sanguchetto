@@ -27,7 +27,6 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="armarSangucheto">Armar Sangucheto</a></li>
-				<li><a href="mostrarSangucheto">Ver Sangucheto</a></li>
 				<li class="active"><a href="ingresaringrediente">Ingresar ingrediente</a></li>
 				<li ><a href="agregarOQuitarStock">Modificar
 						Stock</a></li>
@@ -46,14 +45,15 @@
 			role="form" method="POST">
 			<div class="form-group">
 				<label for="Nombre">Nombre:</label>
-				<form:input id="nombre" class="form-control" type="text"
+				<form:input id="nombre" required="required" class="form-control" type="text"
 					path="nombre" placeholder="Ingresar nombre" />
 			</div>
 
 			<div class="form-group">
 				<label for="precio">Precio:</label>
 				<form:input id="precio" class="form-control" type="number"
-					min="0.01" step="0.01" max="2500" value="25.67" path="precio"
+				    min="0.01" step="0.01" max="2500" path="precio"
+				    required="required"
 					placeholder="Ingresar precio" />
 			</div>
 

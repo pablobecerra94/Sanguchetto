@@ -28,7 +28,6 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="armarSangucheto">Armar Sangucheto</a></li>
-				<li><a href="mostrarSangucheto">Ver Sangucheto</a></li>
 				<li><a href="ingresaringrediente">Ingresar ingrediente</a></li>
 				<li><a href="agregarOQuitarStock">Modificar Stock</a></li>
 				<li><a href="verStockDisponible">Stock Disponible</a></li>
@@ -42,7 +41,7 @@
 		<h1>Gracias por tu compra!</h1>
 	</div>
 	<h3>Felicitaciones por elegir el sanguche perfecto en Sangucheto!</h3>
-	<h2>Precio Final = ${precio}</h2>
+	<h2>Precio Final : ${precio} $.-</h2>
 	<div class="page-header">
 		<h1>Sanguchetto</h1>
 	</div>
@@ -99,6 +98,20 @@
 							</c:if>
 						</tr>
 					</c:forEach>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<table class="table table-borderless table-condensed table-hover">
+				<tbody>
+				
+					<form action="comprarSangucheto" method="POST">
+								<button type="submit" class="btn btn-primary">Comprar
+									Sangucheto</button>
+							</form>
+						
 				</tbody>
 			</table>
 		</div>

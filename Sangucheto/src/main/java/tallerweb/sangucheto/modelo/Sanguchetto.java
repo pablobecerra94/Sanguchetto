@@ -60,6 +60,18 @@ public class Sanguchetto {
 
 	}
 
+	public Boolean quitarIngrediente(Ingrediente ingrediente) {
+		Sanguchetto sanguchetto = Sanguchetto.getInstance();
+		Stock stock = Stock.getInstance();
+		if (sanguchetto.obtenerSanguchetto().containsKey(ingrediente)) {
+			stock.agregarStock(ingrediente, sanguchetto.obtenerSanguchetto().get(ingrediente));
+			sanguchetto.obtenerSanguchetto().remove(ingrediente);
+			return true;
+		}
+		return false;
+
+	}
+
 	/**
 	 * Lista todos los ingredientes que forman parte del sanguchetto.<br>
 	 * 
