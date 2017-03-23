@@ -38,7 +38,6 @@ public class ControladorHome {
 		ModelMap model = new ModelMap("ingrediente", ingrediente);
 
 		if (Stock.getInstance().agregarIngrediente(ingrediente)) {
-			
 			model.put("texto", "Se ingreso correctamente el siguiente producto:");
 		} else {
 			model.put("texto", "No se ha podido ingresar el siguiente producto:");
@@ -62,7 +61,8 @@ public class ControladorHome {
 	public ModelAndView armarSangucheto() {
 		ModelMap model = new ModelMap();
 		model.put("ingrediente", new Ingrediente());
-		model.put("precio", Sanguchetto.getInstance().getPrecio());
+		model.put("precio", String.format("%.2f", Sanguchetto.getInstance().getPrecio()));
+		model.put("descuento",String.format("%.2f", Sanguchetto.getInstance().getPrecio() * 0.10 ));
 		model.put("sanguchetto", Sanguchetto.getInstance().obtenerSanguchetto());
 		model.put("stock", Stock.getInstance().obtenerStock());
 		return new ModelAndView("armarSangucheto", model);
@@ -77,7 +77,8 @@ public class ControladorHome {
 		}
 		
 		model.put("ingrediente", new Ingrediente());
-		model.put("precio", Sanguchetto.getInstance().getPrecio());
+		model.put("precio", String.format("%.2f", Sanguchetto.getInstance().getPrecio()));
+		model.put("descuento",String.format("%.2f", Sanguchetto.getInstance().getPrecio() * 0.10 ));
 		model.put("sanguchetto", Sanguchetto.getInstance().obtenerSanguchetto());
 		model.put("stock", Stock.getInstance().obtenerStock());
 		return new ModelAndView("armarSangucheto", model);
@@ -89,7 +90,8 @@ public class ControladorHome {
 		ModelMap model = new ModelMap();
 		Sanguchetto.getInstance().vaciar();
 		model.put("ingrediente", new Ingrediente());
-		model.put("precio", Sanguchetto.getInstance().getPrecio());
+		model.put("precio", String.format("%.2f", Sanguchetto.getInstance().getPrecio()));
+		model.put("descuento",String.format("%.2f", Sanguchetto.getInstance().getPrecio() * 0.10 ));
 		model.put("sanguchetto", Sanguchetto.getInstance().obtenerSanguchetto());
 		model.put("stock", Stock.getInstance().obtenerStock());
 		return new ModelAndView("armarSangucheto", model);
@@ -145,20 +147,19 @@ public class ControladorHome {
 	public ModelAndView comprarSangucheto(){
 	
 		ModelMap model = new ModelMap();
-		if(Sanguchetto.getInstance().estaVacio()){
-			
+		
+		
+		if(Sanguchetto.getInstance().estaVacio()){	
+			model.put("precio", String.format("%.2f", Sanguchetto.getInstance().getPrecio()));
+			model.put("descuento",String.format("%.2f", Sanguchetto.getInstance().getPrecio() * 0.10 ));
 			model.put("ingrediente", new Ingrediente());
-			model.put("precio", Sanguchetto.getInstance().getPrecio());
 			model.put("sanguchetto", Sanguchetto.getInstance().obtenerSanguchetto());
 			model.put("stock", Stock.getInstance().obtenerStock());
 			return new ModelAndView("armarSangucheto");
 		}
-		else{
-			Sanguchetto.getInstance().finalizarCompra();
-			return new ModelAndView("comprarSangucheto");
-		}
-			
-		
+		model.put("precio", String.format("%.2f", Sanguchetto.getInstance().getPrecio()*0.90));
+		model.put("sangucheto",Sanguchetto.getInstance().obtenerSanguchetto());
+		return new ModelAndView("comprarSangucheto",model);
 	}
 	
 	@RequestMapping(value="eliminarIngrediente", method = RequestMethod.POST)
