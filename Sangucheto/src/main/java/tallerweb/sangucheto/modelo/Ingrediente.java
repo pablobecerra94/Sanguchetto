@@ -9,7 +9,17 @@ public class Ingrediente {
     public String getNombre() {
         return nombre;
     }
-    public void setNombre(String nombre) {
+    public Ingrediente()
+    {
+ 
+    }
+    public Ingrediente(String nombre, Double precio, TipoIngrediente tipo) {
+		super();
+		this.nombre = nombre;
+		this.precio = precio;
+		this.tipo = tipo;
+	}
+	public void setNombre(String nombre) {
         this.nombre = nombre;
     }
     public Double getPrecio() {

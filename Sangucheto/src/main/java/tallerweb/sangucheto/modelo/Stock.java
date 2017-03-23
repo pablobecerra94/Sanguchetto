@@ -14,11 +14,22 @@ public class Stock {
 	
 	private static Stock instance = new Stock();
 	private Map<Ingrediente, Integer> stock = new HashMap<Ingrediente, Integer>();
-	
+	private static Boolean primerLlamadoAStock= true;
 	private Stock(){
 	}
 
 	public static Stock getInstance(){
+		if(primerLlamadoAStock)
+		{
+			instance.agregarIngrediente(new Ingrediente("queso", 20.3, TipoIngrediente.INGREDIENTE));
+		instance.agregarIngrediente(new Ingrediente("jamon", 16.5, TipoIngrediente.CONDIMENTO));
+		instance.agregarIngrediente(new Ingrediente("salame", 20.3, TipoIngrediente.INGREDIENTE));
+		instance.agregarStock(new Ingrediente("queso", 20.3, TipoIngrediente.INGREDIENTE), 1);
+		instance.agregarStock(new Ingrediente("jamon", 16.5, TipoIngrediente.CONDIMENTO), 4);
+		instance.agregarStock(new Ingrediente("salame", 20.3, TipoIngrediente.INGREDIENTE), 3);
+		}
+		else
+			primerLlamadoAStock=false;
 		return instance;
 	}
 	

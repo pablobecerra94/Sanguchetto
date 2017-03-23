@@ -8,17 +8,16 @@ import java.util.Set;
 public class Sanguchetto {
 
 	private static Sanguchetto instance = new Sanguchetto();
-	private HashMap<Ingrediente,Integer> ingredientes = new HashMap<Ingrediente, Integer>();
+	private HashMap<Ingrediente, Integer> ingredientes = new HashMap<Ingrediente, Integer>();
 
 	private Sanguchetto() {
 	}
-	
-	public Boolean estaVacio()
-	{
+
+	public Boolean estaVacio() {
 		return ingredientes.isEmpty();
 	}
 
-	public HashMap<Ingrediente,Integer> obtenerSanguchetto() {
+	public HashMap<Ingrediente, Integer> obtenerSanguchetto() {
 		return ingredientes;
 	}
 
@@ -50,10 +49,9 @@ public class Sanguchetto {
 	public Boolean agregarIngrediente(Ingrediente ingrediente, Integer cantidad) {
 		Stock stock = Stock.getInstance();
 		if (stock.comprarIngrediente(ingrediente, cantidad)) {
-			if(ingredientes.containsKey(ingrediente)){
-				ingredientes.put(ingrediente,ingredientes.get(ingrediente) + cantidad);				
-			}
-			else{
+			if (ingredientes.containsKey(ingrediente)) {
+				ingredientes.put(ingrediente, ingredientes.get(ingrediente) + cantidad);
+			} else {
 				ingredientes.put(ingrediente, cantidad);
 			}
 			return true;
@@ -76,6 +74,14 @@ public class Sanguchetto {
 		}
 
 		return ingredientesADevolver;
+	}
+
+	public int cantidadDeIngredientes() {
+		int cantidadDeIngredientes = 0;
+		for (Ingrediente ingrediente : ingredientes.keySet())
+			if (ingrediente.getTipo().equals(TipoIngrediente.INGREDIENTE))
+				cantidadDeIngredientes++;
+		return cantidadDeIngredientes;
 	}
 
 	/**
@@ -102,7 +108,7 @@ public class Sanguchetto {
 	public Double getPrecio() {
 		Double precioTotal = 0.0;
 		for (Ingrediente ingrediente : ingredientes.keySet()) {
-			precioTotal += ingrediente.getPrecio()*ingredientes.get(ingrediente);
+			precioTotal += ingrediente.getPrecio() * ingredientes.get(ingrediente);
 		}
 
 		return precioTotal;
@@ -113,5 +119,4 @@ public class Sanguchetto {
 		ingredientes.clear();
 	}
 
-	
 }
