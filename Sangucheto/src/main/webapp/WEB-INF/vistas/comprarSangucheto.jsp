@@ -43,7 +43,7 @@
 	<h3>Felicitaciones por elegir el sanguche perfecto en Sangucheto!</h3>
 	<h2>Precio Final : ${precio} $.-</h2>
 	<div class="page-header">
-		<h1>Sanguchetto</h1>
+		<h1>Sangucheto</h1>
 	</div>
 	<h2>Ingredientes</h2>
 	<div class="row">

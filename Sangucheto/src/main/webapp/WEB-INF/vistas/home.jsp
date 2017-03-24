@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Sangucheto!</title>
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
@@ -39,12 +39,17 @@
 	<br>
 	<br>
 <div align="center" class="page-header">
-<img class="img-rounded" width="17%" src="images/SanguchettoImg.jpg"/>
+<img class="img-rounded" width="20%" src="images/sangucheto.png"/>
+</div>
+
+<div class="container" align="center">
+<img src="images/keep.png" class="img-rounded"/>
 </div>
 
 <div class="container" align="center">
 <img src="images/SanguchettoImg2.jpg"/>
 </div>
+
 
 
 </body>

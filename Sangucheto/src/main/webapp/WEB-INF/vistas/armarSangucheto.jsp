@@ -41,8 +41,12 @@
 	</div>
 	</nav>
 	<br>
-	<div class="page-header">
-		<h1>Arma tu Sangucheto</h1>
+	<div class="page-header" >
+		<h1>Arma tu Sangucheto 
+		 <!-- <img class="img-rounded" width="7%" src="images/SanguchettoImg.jpg" /> -->
+		</h1>
+			
+		
 	</div>
 	<h2>Ingredientes</h2>
 	<div class="row">
@@ -54,7 +58,7 @@
 						<th>Tipo</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
-						
+
 					</tr>
 				</thead>
 				<tbody>
@@ -74,7 +78,7 @@
 										<td><input type="number" name="cantidad" type="number"
 											value="1" placeholder="Ingresar numero positivo" /></td>
 										<td><button type="submit" class="btn btn-primary">Agregar
-												al Sanguchetto</button></td>
+												al Sangucheto</button></td>
 									</c:if>
 								</c:if>
 							</tr>
@@ -95,7 +99,7 @@
 						<th>Tipo</th>
 						<th>Precio</th>
 						<th>Cantidad</th>
-					
+
 					</tr>
 				</thead>
 				<tbody>
@@ -115,7 +119,7 @@
 										<td><input type="number" name="cantidad" type="number"
 											value="1" placeholder="Ingresar numero positivo" /></td>
 										<td><button type="submit" class="btn btn-primary">Agregar
-												al Sanguchetto</button></td>
+												al Sangucheto</button></td>
 									</c:if>
 								</c:if>
 							</tr>
@@ -130,7 +134,7 @@
 		<h2>Promoción del dia: 10% de descuento al llevar 3 o mas
 			ingredientes/condimientos DIFERENTES</h2>
 
-		<h1>Sanguchetto Precio Total: ${precio}$.-</h1>
+		<h1>Sangucheto Precio Total: ${precio}$.-</h1>
 		<c:set var="object2" value="${sanguchetto}" />
 		<c:choose>
 			<c:when test="${fn:length(object2) > 2}">
