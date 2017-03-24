@@ -107,9 +107,9 @@
 			<table class="table table-borderless table-condensed table-hover">
 				<tbody>
 				
-					<form action="comprarSangucheto" method="POST">
+					<form action="armarSangucheto" method="POST">
 								<button type="submit" class="btn btn-primary">Comprar
-									Sangucheto</button>
+									otro Sangucheto</button>
 							</form>
 						
 				</tbody>
