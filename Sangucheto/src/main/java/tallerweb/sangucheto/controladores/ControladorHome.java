@@ -78,7 +78,7 @@ public class ControladorHome {
 	}
 
 	// VACIAR SANGUCHETTO
-	@RequestMapping(value = "armarSanguchettoVaciar", method = RequestMethod.POST)
+	@RequestMapping(value = "armarSanguchettoVaciar")
 	public ModelAndView armarSanguchetoVaciar() {
 		ModelMap model = new ModelMap();
 		Sanguchetto.getInstance().vaciar();

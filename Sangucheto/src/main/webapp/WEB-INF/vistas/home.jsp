@@ -44,13 +44,12 @@
 
 <div class="container" align="center">
 <img src="images/keep.png" class="img-rounded"/>
-</div>
 
-<div class="container" align="center">
 <img src="images/SanguchettoImg2.jpg"/>
 </div>
 
 
-
+<script src="js/jquery.1,11,3,min.js" type ="text/javascript"> </script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

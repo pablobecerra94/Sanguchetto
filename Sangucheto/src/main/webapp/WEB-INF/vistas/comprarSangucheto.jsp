@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +13,7 @@
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -27,7 +27,8 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="armarSangucheto">Armar Sangucheto</a></li>
+				<li class="active"><a href="armarSangucheto">Armar
+						Sangucheto</a></li>
 				<li><a href="ingresaringrediente">Ingresar ingrediente</a></li>
 				<li><a href="agregarOQuitarStock">Modificar Stock</a></li>
 				<li><a href="verStockDisponible">Stock Disponible</a></li>
@@ -73,8 +74,8 @@
 			</table>
 		</div>
 	</div>
-	
-		<h2>Condimentos</h2>
+
+	<h2>Condimentos</h2>
 	<div class="row">
 		<div class="col-md-6">
 			<table class="table table-bordered">
@@ -106,16 +107,21 @@
 		<div class="col-md-6">
 			<table class="table table-borderless table-condensed table-hover">
 				<tbody>
-				
+
 					<form action="armarSangucheto" method="POST">
-								<button type="submit" class="btn btn-primary">Comprar
-									otro Sangucheto</button>
-							</form>
-						
+						<button type="submit" class="btn btn-primary">Comprar
+							otro Sangucheto</button>
+					</form>
+
 				</tbody>
 			</table>
 		</div>
 	</div>
-	
+
+	<script src="js/jquery.1,11,3,min.js" type="text/javascript">
+		
+	</script>
+	<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>

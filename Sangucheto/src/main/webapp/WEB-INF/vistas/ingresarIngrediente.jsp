@@ -10,9 +10,10 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap theme -->
 <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="css/miEstilo.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -27,9 +28,9 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="armarSangucheto">Armar Sangucheto</a></li>
-				<li class="active"><a href="ingresaringrediente">Ingresar ingrediente</a></li>
-				<li ><a href="agregarOQuitarStock">Modificar
-						Stock</a></li>
+				<li class="active"><a href="ingresaringrediente">Ingresar
+						ingrediente</a></li>
+				<li><a href="agregarOQuitarStock">Modificar Stock</a></li>
 				<li><a href="verStockDisponible">Stock Disponible</a></li>
 			</ul>
 		</div>
@@ -45,21 +46,22 @@
 			role="form" method="POST">
 			<div class="form-group">
 				<label for="Nombre">Nombre:</label>
-				<form:input id="nombre" required="required" class="form-control" type="text"
-					path="nombre" placeholder="Ingresar nombre" />
+				<form:input id="nombre" required="required" class="form-control"
+					type="text" path="nombre" placeholder="Ingresar nombre" />
 			</div>
 
 			<div class="form-group">
 				<label for="precio">Precio:</label>
 				<form:input id="precio" class="form-control" type="number"
-				    min="0.01" step="0.01" max="2500" path="precio"
-				    required="required"
+					min="0.01" step="0.01" max="2500" path="precio" required="required"
 					placeholder="Ingresar precio" />
 			</div>
 
 			<div class="form-group">
-				<form:radiobutton id="tipo" path="tipo" value="INGREDIENTE" label="Ingrediente" checked="cheked"/>
-				<form:radiobutton id="tipo" path="tipo" value="CONDIMENTO" label="Condimento"/>
+				<form:radiobutton id="tipo" path="tipo" value="INGREDIENTE"
+					label="Ingrediente" checked="cheked" />
+				<form:radiobutton id="tipo" path="tipo" value="CONDIMENTO"
+					label="Condimento" />
 			</div>
 
 
@@ -68,5 +70,10 @@
 		</form:form>
 
 	</div>
+
+	<script src="js/jquery.1,11,3,min.js" type="text/javascript">
+		
+	</script>
+	<script src="js/bootstrap.min.js"></script>
 </body>
 </html>

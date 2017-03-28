@@ -41,171 +41,177 @@
 	</div>
 	</nav>
 	<br>
-	<div class="page-header" >
-		<h1>Arma tu Sangucheto 
-		 <!-- <img class="img-rounded" width="7%" src="images/SanguchettoImg.jpg" /> -->
-		</h1>
-			
-		
-	</div>
-	<h2>Ingredientes</h2>
-	<div class="row">
-		<div class="col-md-6">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Ingrediente</th>
-						<th>Tipo</th>
-						<th>Precio</th>
-						<th>Cantidad</th>
-
-					</tr>
-				</thead>
-				<tbody>
-
-					<c:forEach items="${stock}" var="object">
-						<form:form action="armarSanguchettoAgrega"
-							modelAttribute="ingrediente" role="form" method="POST">
-							<tr>
-								<c:if test="${object.key.tipo.toString().equals('INGREDIENTE')}">
-									<c:if test="${object.value>0}">
-										<td><form:input style="border:none" path="nombre"
-												value="${object.key.nombre}" readonly="true" /></td>
-										<td><form:input style="border:none" path="tipo"
-												value="${object.key.tipo}" readonly="true" /></td>
-										<td><form:input style="border:none" path="precio"
-												value="${object.key.precio}" readonly="true" /></td>
-										<td><input type="number" name="cantidad" type="number"
-											value="1" placeholder="Ingresar numero positivo" /></td>
-										<td><button type="submit" class="btn btn-primary">Agregar
-												al Sangucheto</button></td>
-									</c:if>
-								</c:if>
-							</tr>
-						</form:form>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
-	<h2>Condimentos</h2>
-	<div class="row">
-		<div class="col-md-6">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Ingrediente</th>
-						<th>Tipo</th>
-						<th>Precio</th>
-						<th>Cantidad</th>
-
-					</tr>
-				</thead>
-				<tbody>
-
-					<c:forEach items="${stock}" var="object">
-						<form:form action="armarSanguchettoAgrega"
-							modelAttribute="ingrediente" role="form" method="POST">
-							<tr>
-								<c:if test="${object.key.tipo.toString().equals('CONDIMENTO')}">
-									<c:if test="${object.value>0}">
-										<td><form:input style="border:none" path="nombre"
-												value="${object.key.nombre}" readonly="true" /></td>
-										<td><form:input style="border:none" path="tipo"
-												value="${object.key.tipo}" readonly="true" /></td>
-										<td><form:input style="border:none" path="precio"
-												value="${object.key.precio}" readonly="true" /></td>
-										<td><input type="number" name="cantidad" type="number"
-											value="1" placeholder="Ingresar numero positivo" /></td>
-										<td><button type="submit" class="btn btn-primary">Agregar
-												al Sangucheto</button></td>
-									</c:if>
-								</c:if>
-							</tr>
-						</form:form>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div>
-
 	<div class="page-header">
-		<h2>Promoción del dia: 10% de descuento al llevar 3 o mas
-			ingredientes/condimientos DIFERENTES</h2>
+		<h1>
+			Arma tu Sangucheto
+			<!-- <img class="img-rounded" width="7%" src="images/SanguchettoImg.jpg" /> -->
+		</h1>
 
-		<h1>Sangucheto Precio Total: ${precio}$.-</h1>
-		<c:set var="object2" value="${sanguchetto}" />
-		<c:choose>
-			<c:when test="${fn:length(object2) > 2}">
-				<h1>Descuento actual: ${descuento} $.-</h1>
-			</c:when>
-			<c:otherwise>
-				<h1>Descuento actual: 0$ .-</h1>
-			</c:otherwise>
-		</c:choose>
+
 	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Tipo</th>
-						<th>Precio</th>
-						<th>Cantidad</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${sanguchetto}" var="object">
-						<form:form modelAttribute="ingrediente" role="form"
-							action="eliminarDeSanguchetto" method="POST">
-							<tr>
-								<td><form:input style="border:none" path="nombre"
-										value="${object.key.nombre}" readonly="true" /></td>
-								<td><form:input style="border:none" path="tipo"
-										value="${object.key.tipo}" readonly="true" /></td>
-								<td><form:input style="border:none" path="precio"
-										value="${object.key.precio}" readonly="true" /></td>
+	<div class="container-fluid">
+		<h2>Ingredientes</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Ingrediente</th>
+							<th>Tipo</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
 
-								<td>${object.value}</td>
-								<td><button type="submit" class="btn btn-primary">Eliminar
-										Ingrediente</button></td>
-							</tr>
-						</form:form>
+						</tr>
+					</thead>
+					<tbody>
 
-					</c:forEach>
-				</tbody>
-			</table>
+						<c:forEach items="${stock}" var="object">
+							<form:form action="armarSanguchettoAgrega"
+								modelAttribute="ingrediente" role="form" method="POST">
+								<tr>
+									<c:if
+										test="${object.key.tipo.toString().equals('INGREDIENTE')}">
+										<c:if test="${object.value>0}">
+											<td><form:input style="border:none" path="nombre"
+													value="${object.key.nombre}" readonly="true" /></td>
+											<td><form:input style="border:none" path="tipo"
+													value="${object.key.tipo}" readonly="true" /></td>
+											<td><form:input style="border:none" path="precio"
+													value="${object.key.precio}" readonly="true" /></td>
+											<td><input type="number" name="cantidad" type="number"
+												value="1" placeholder="Ingresar numero positivo" /></td>
+											<td><button type="submit" class="btn btn-primary">Agregar
+												</button></td>
+										</c:if>
+									</c:if>
+								</tr>
+							</form:form>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<h2>Condimentos</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Ingrediente</th>
+							<th>Tipo</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+
+						</tr>
+					</thead>
+					<tbody>
+
+						<c:forEach items="${stock}" var="object">
+							<form:form action="armarSanguchettoAgrega"
+								modelAttribute="ingrediente" role="form" method="POST">
+								<tr>
+									<c:if test="${object.key.tipo.toString().equals('CONDIMENTO')}">
+										<c:if test="${object.value>0}">
+											<td><form:input style="border:none" path="nombre"
+													value="${object.key.nombre}" readonly="true" /></td>
+											<td><form:input style="border:none" path="tipo"
+													value="${object.key.tipo}" readonly="true" /></td>
+											<td><form:input style="border:none" path="precio"
+													value="${object.key.precio}" readonly="true" /></td>
+											<td><input type="number" name="cantidad" type="number"
+												value="1" placeholder="Ingresar numero positivo" /></td>
+											<td><button type="submit" class="btn btn-primary">Agregar
+												</button></td>
+										</c:if>
+									</c:if>
+								</tr>
+							</form:form>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="page-header">
+			<h2>Promoción del dia: 10% de descuento al llevar 3 o mas
+				ingredientes/condimientos DIFERENTES</h2>
+
+			<h1>Sangucheto Precio Total: ${precio}$.-</h1>
+			<c:set var="object2" value="${sanguchetto}" />
+			<c:choose>
+				<c:when test="${fn:length(object2) > 2}">
+					<h1>Descuento actual: ${descuento} $.-</h1>
+				</c:when>
+				<c:otherwise>
+					<h1>Descuento actual: 0$ .-</h1>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${sanguchetto}" var="object">
+							<form:form modelAttribute="ingrediente" role="form"
+								action="eliminarDeSanguchetto" method="POST">
+								<tr>
+									<td><form:input style="border:none" path="nombre"
+											value="${object.key.nombre}" readonly="true" /></td>
+									<td><form:input style="border:none" path="tipo"
+											value="${object.key.tipo}" readonly="true" /></td>
+									<td><form:input style="border:none" path="precio"
+											value="${object.key.precio}" readonly="true" /></td>
+
+									<td>${object.value}</td>
+									<td><button type="submit" class="btn btn-primary">Eliminar
+											Ingrediente</button></td>
+								</tr>
+							</form:form>
+
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-borderless table-condensed table-hover">
+					<tbody>
+						<tr>
+							<td><form action="comprarSangucheto" method="POST">
+									<button type="submit" class="btn btn-primary">Comprar
+										Sangucheto</button>
+								</form></td>
+							<td>
+								<form action="armarSanguchettoVaciar" method="POST">
+									<button type="submit" class="btn btn-primary">Cancelar</button>
+								</form>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-6">
-			<table class="table table-borderless table-condensed table-hover">
-				<tbody>
-					<tr>
-						<td><form action="comprarSangucheto" method="POST">
-								<button type="submit" class="btn btn-primary">Comprar
-									Sangucheto</button>
-							</form></td>
-						<td>
-							<form action="armarSanguchettoVaciar" method="POST">
-								<button type="submit" class="btn btn-primary">Cancelar</button>
-							</form>
-						</td>
-
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
 
 
-
-
-
+	<script src="js/jquery.1,11,3,min.js" type="text/javascript">
+		
+	</script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>
